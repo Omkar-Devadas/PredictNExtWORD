@@ -1,4 +1,4 @@
-# 📚 Data Collection
+#  Data Collection
 import nltk
 nltk.download('gutenberg')
 from nltk.corpus import gutenberg
@@ -8,7 +8,7 @@ data = gutenberg.raw('shakespeare-hamlet.txt')
 with open('hamlet.txt', 'w') as file:
     file.write(data)
 
-# 🧹 Data Preprocessing
+# Data Preprocessing
 import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -41,7 +41,7 @@ y = tf.keras.utils.to_categorical(y, num_classes=total_words)
 # Train-test split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-# 🔁 Model: LSTM RNN
+#  Model: LSTM RNN
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout, GRU
 from tensorflow.keras.callbacks import EarlyStopping
@@ -61,7 +61,7 @@ model.summary()
 # Model training
 history = model.fit(x_train, y_train, epochs=50, validation_data=(x_test, y_test), verbose=1, callbacks=[early_stopping])
 
-# 🔮 Prediction function
+#Prediction function
 def predict_next_word(model, tokenizer, text, max_sequence_len):
     token_list = tokenizer.texts_to_sequences([text])[0]
     if len(token_list) >= max_sequence_len:
